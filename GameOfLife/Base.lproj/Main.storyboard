@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="G4D-Xn-jXV">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Conway's Game Of Life-->
+        <scene sceneID="YQv-3e-r6P">
+            <objects>
+                <viewController id="u34-4c-Lso" customClass="GameViewController" customModule="GameOfLife" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="DJ7-g8-EE4">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Generation: #" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="861-Ox-s98">
+                                <rect key="frame" x="155" y="228.5" width="104" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="13" translatesAutoresizingMaskIntoConstraints="NO" id="bpn-H3-uSt">
+                                <rect key="frame" x="73.5" y="655" width="267" height="30"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JTd-qW-EOW">
+                                        <rect key="frame" x="0.0" y="0.0" width="55" height="30"/>
+                                        <state key="normal" title="Preset 1"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cWr-Hz-8OY">
+                                        <rect key="frame" x="68" y="0.0" width="57" height="30"/>
+                                        <state key="normal" title="Preset 2"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SDZ-qU-Rhu">
+                                        <rect key="frame" x="138" y="0.0" width="58" height="30"/>
+                                        <state key="normal" title="Preset 3"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3rs-OV-Z28">
+                                        <rect key="frame" x="209" y="0.0" width="58" height="30"/>
+                                        <state key="normal" title="Preset 4"/>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SU4-QW-0di">
+                                <rect key="frame" x="0.0" y="782" width="414" height="80"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <connections>
+                                    <segue destination="HID-IZ-iZU" kind="embed" id="8GZ-2m-NlA"/>
+                                </connections>
+                            </containerView>
+                            <skView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FyG-2b-iAc">
+                                <rect key="frame" x="16" y="257" width="382" height="382"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="FyG-2b-iAc" secondAttribute="height" multiplier="1:1" id="pc6-k2-CSf"/>
+                                </constraints>
+                            </skView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="FyG-2b-iAc" firstAttribute="centerY" secondItem="DJ7-g8-EE4" secondAttribute="centerY" id="8Vx-IN-NM3"/>
+                            <constraint firstItem="ljc-wW-JAS" firstAttribute="trailing" secondItem="FyG-2b-iAc" secondAttribute="trailing" constant="16" id="BfY-rC-eMx"/>
+                            <constraint firstItem="bpn-H3-uSt" firstAttribute="centerX" secondItem="DJ7-g8-EE4" secondAttribute="centerX" id="LDT-u8-YXt"/>
+                            <constraint firstItem="FyG-2b-iAc" firstAttribute="leading" secondItem="ljc-wW-JAS" secondAttribute="leading" constant="16" id="MEo-aj-5j2"/>
+                            <constraint firstItem="bpn-H3-uSt" firstAttribute="top" secondItem="FyG-2b-iAc" secondAttribute="bottom" constant="16" id="NxO-GV-wOj"/>
+                            <constraint firstItem="861-Ox-s98" firstAttribute="centerX" secondItem="DJ7-g8-EE4" secondAttribute="centerX" id="acl-lF-bvx"/>
+                            <constraint firstItem="FyG-2b-iAc" firstAttribute="top" secondItem="861-Ox-s98" secondAttribute="bottom" constant="8" id="pmy-Ch-KhL"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="ljc-wW-JAS"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Conway's Game Of Life" id="yvx-Uz-f0r">
+                        <barButtonItem key="rightBarButtonItem" image="info.circle" catalog="system" id="qWl-go-5uj">
+                            <connections>
+                                <segue destination="3Cy-yy-EY3" kind="show" id="LsL-hg-fMT"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="genarationLabel" destination="861-Ox-s98" id="T0k-1i-KnU"/>
+                        <outlet property="gridView" destination="FyG-2b-iAc" id="bTe-1X-16z"/>
+                        <outlet property="preset1Button" destination="JTd-qW-EOW" id="vvh-FV-osZ"/>
+                        <outlet property="preset2Button" destination="cWr-Hz-8OY" id="Dny-Gq-MRp"/>
+                        <outlet property="preset3Button" destination="SDZ-qU-Rhu" id="07R-tJ-mK7"/>
+                        <outlet property="preset4Button" destination="3rs-OV-Z28" id="pRZ-C4-bu2"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7xC-ih-Qcl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1949.2753623188407" y="302.00892857142856"/>
+        </scene>
+        <!--About-->
+        <scene sceneID="6Kd-1J-sgH">
+            <objects>
+                <viewController id="3Cy-yy-EY3" customClass="AboutViewController" customModule="GameOfLife" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="CAT-dU-Pwd">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="LES-cJ-wOF"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="About" id="kRl-vB-nw9"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WpV-8M-ogc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2676.811594202899" y="300.66964285714283"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="BDa-7H-Ohd">
+            <objects>
+                <viewController id="HID-IZ-iZU" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="2sk-7t-FBY">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="80"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Csm-41-isp">
+                                <rect key="frame" x="14" y="29" width="31" height="22"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="playpause" catalog="system">
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tJH-kx-e6W">
+                                <rect key="frame" x="368" y="29" width="22" height="22"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="stop" catalog="system">
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p1b-oQ-45D">
+                                <rect key="frame" x="145" y="25" width="130" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                                <state key="normal" title="Advance 1 Step"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CeN-qC-AMs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1951" y="777"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="EXC-gp-I3B">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="G4D-Xn-jXV" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="U1E-lT-V0l">
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="u34-4c-Lso" kind="relationship" relationship="rootViewController" id="SUQ-Gf-JdC"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9VC-jG-rfG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1039.1304347826087" y="302.00892857142856"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="info.circle" catalog="system" width="128" height="121"/>
+        <image name="playpause" catalog="system" width="128" height="83"/>
+        <image name="stop" catalog="system" width="128" height="113"/>
+    </resources>
+</document>
