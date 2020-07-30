@@ -116,6 +116,7 @@ class GridView: UIView {
     }
     
     func resetGrid() {
+        generation = 0
         for x in 0...nextMatrix.count-1 {
             for y in 0...nextMatrix.count-1 {
                 nextMatrix[x][y].die()
@@ -176,11 +177,21 @@ class GridView: UIView {
         let x = col/2
         let y = row/2
         
-        nextMatrix[x][y].comeAlive()
-        nextMatrix[x+1][y-1].comeAlive()
-        nextMatrix[x+1][y+1].comeAlive()
-        nextMatrix[x+2][y].comeAlive()
+        nextMatrix[x-1][y].comeAlive()
+        nextMatrix[x][y-1].comeAlive()
+        nextMatrix[x][y+1].comeAlive()
+        nextMatrix[x+1][y].comeAlive()
         
+        updateGrid()
+    }
+    
+    func randomSet() {
+        for x in nextMatrix {
+            for _ in Range(0...24) {
+                x.randomElement()?.comeAlive()
+                
+            }
+        }
         updateGrid()
     }
     

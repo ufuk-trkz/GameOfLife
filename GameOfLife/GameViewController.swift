@@ -18,8 +18,7 @@ class GameViewController: UIViewController {
     @IBOutlet weak var preset2Button: UIButton!
     @IBOutlet weak var preset3Button: UIButton!
     @IBOutlet weak var preset4Button: UIButton!
-    
-    @IBOutlet weak var tabBar: UIView!
+    @IBOutlet weak var oneStepButton: UIButton!
     
     // MARK: - Properties
 
@@ -32,9 +31,11 @@ class GameViewController: UIViewController {
         gridView.isMultipleTouchEnabled = false
         gridView.updateGrid()
     }
+    @IBAction func oneStep(_ sender: Any) {
+        gridView.computeNext(label: genarationLabel)
+    }
     @IBAction func play(_ sender: Any) {
         gridView.configureTimer(label: genarationLabel)
-        
     }
     @IBAction func stop(_ sender: Any) {
         gridView.configureTimer(label: genarationLabel)
@@ -55,6 +56,9 @@ class GameViewController: UIViewController {
         gridView.preset4()
     }
     
+    @IBAction func random(_ sender: Any) {
+        gridView.randomSet()
+    }
     /*
     // MARK: - Navigation
 
