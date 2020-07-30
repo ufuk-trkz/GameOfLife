@@ -9,21 +9,34 @@
 import Foundation
 import SpriteKit
 
-enum State {
-    case alive
-    case dead
-}
-
-class Cell {
-    var state: State? {
-        didSet {
-            if state == State.alive {
-                color = SKColor.black
-            } else if state == State.dead {
-                color = SKColor.white
-            }
+class Cell: UIView {
+    
+    var dead: Bool = true
+    
+    init(frame: CGRect, dead: Bool = true) {
+        super.init(frame: frame)
+        self.dead = dead
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    func die() {
+        dead = true
+        backgroundColor = .white
+    }
+    
+    func comeAlive() {
+        dead = false
+        backgroundColor = .black
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if dead {
+            comeAlive()
+        } else {
+            die()
         }
     }
-    var color: SKColor?
-    
 }

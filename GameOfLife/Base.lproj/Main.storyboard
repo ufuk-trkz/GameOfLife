@@ -27,18 +27,30 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JTd-qW-EOW">
                                         <rect key="frame" x="0.0" y="0.0" width="55" height="30"/>
                                         <state key="normal" title="Preset 1"/>
+                                        <connections>
+                                            <action selector="preset1:" destination="u34-4c-Lso" eventType="touchUpInside" id="fB9-Hf-aLd"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cWr-Hz-8OY">
                                         <rect key="frame" x="68" y="0.0" width="57" height="30"/>
                                         <state key="normal" title="Preset 2"/>
+                                        <connections>
+                                            <action selector="preset2:" destination="u34-4c-Lso" eventType="touchUpInside" id="apQ-I8-OWS"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SDZ-qU-Rhu">
                                         <rect key="frame" x="138" y="0.0" width="58" height="30"/>
                                         <state key="normal" title="Preset 3"/>
+                                        <connections>
+                                            <action selector="preset3:" destination="u34-4c-Lso" eventType="touchUpInside" id="u8a-GS-38C"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3rs-OV-Z28">
                                         <rect key="frame" x="209" y="0.0" width="58" height="30"/>
                                         <state key="normal" title="Preset 4"/>
+                                        <connections>
+                                            <action selector="preset4:" destination="u34-4c-Lso" eventType="touchUpInside" id="LEQ-QY-Q4p"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -49,22 +61,49 @@
                                     <segue destination="HID-IZ-iZU" kind="embed" id="8GZ-2m-NlA"/>
                                 </connections>
                             </containerView>
-                            <skView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FyG-2b-iAc">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NMd-5w-Z4o" customClass="GridView" customModule="GameOfLife" customModuleProvider="target">
                                 <rect key="frame" x="16" y="257" width="382" height="382"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="FyG-2b-iAc" secondAttribute="height" multiplier="1:1" id="pc6-k2-CSf"/>
+                                    <constraint firstAttribute="width" secondItem="NMd-5w-Z4o" secondAttribute="height" multiplier="1:1" id="TsC-RQ-1WL"/>
                                 </constraints>
-                            </skView>
+                            </view>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="w0L-Qe-NXY">
+                                <rect key="frame" x="161" y="709" width="92" height="22"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2ZK-cM-lha">
+                                        <rect key="frame" x="0.0" y="0.0" width="30.5" height="22"/>
+                                        <state key="normal" image="playpause" catalog="system">
+                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="play:" destination="u34-4c-Lso" eventType="touchUpInside" id="e2a-9y-aYd"/>
+                                            <action selector="playButton:" destination="UDZ-fc-Gsb" eventType="touchUpInside" id="Qo1-pe-o1V"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tJH-kx-e6W">
+                                        <rect key="frame" x="70.5" y="0.0" width="21.5" height="22"/>
+                                        <state key="normal" image="stop" catalog="system">
+                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="stop:" destination="u34-4c-Lso" eventType="touchUpInside" id="dwB-zc-5eD"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="FyG-2b-iAc" firstAttribute="centerY" secondItem="DJ7-g8-EE4" secondAttribute="centerY" id="8Vx-IN-NM3"/>
-                            <constraint firstItem="ljc-wW-JAS" firstAttribute="trailing" secondItem="FyG-2b-iAc" secondAttribute="trailing" constant="16" id="BfY-rC-eMx"/>
+                            <constraint firstItem="w0L-Qe-NXY" firstAttribute="centerX" secondItem="DJ7-g8-EE4" secondAttribute="centerX" id="3k9-6x-643"/>
                             <constraint firstItem="bpn-H3-uSt" firstAttribute="centerX" secondItem="DJ7-g8-EE4" secondAttribute="centerX" id="LDT-u8-YXt"/>
-                            <constraint firstItem="FyG-2b-iAc" firstAttribute="leading" secondItem="ljc-wW-JAS" secondAttribute="leading" constant="16" id="MEo-aj-5j2"/>
-                            <constraint firstItem="bpn-H3-uSt" firstAttribute="top" secondItem="FyG-2b-iAc" secondAttribute="bottom" constant="16" id="NxO-GV-wOj"/>
+                            <constraint firstItem="ljc-wW-JAS" firstAttribute="trailing" secondItem="NMd-5w-Z4o" secondAttribute="trailing" constant="16" id="QLY-Dq-nzd"/>
                             <constraint firstItem="861-Ox-s98" firstAttribute="centerX" secondItem="DJ7-g8-EE4" secondAttribute="centerX" id="acl-lF-bvx"/>
-                            <constraint firstItem="FyG-2b-iAc" firstAttribute="top" secondItem="861-Ox-s98" secondAttribute="bottom" constant="8" id="pmy-Ch-KhL"/>
+                            <constraint firstItem="NMd-5w-Z4o" firstAttribute="top" secondItem="861-Ox-s98" secondAttribute="bottom" constant="8" id="bEG-j8-t4e"/>
+                            <constraint firstItem="NMd-5w-Z4o" firstAttribute="centerY" secondItem="DJ7-g8-EE4" secondAttribute="centerY" id="eU1-Eh-f1l"/>
+                            <constraint firstItem="NMd-5w-Z4o" firstAttribute="leading" secondItem="ljc-wW-JAS" secondAttribute="leading" constant="16" id="mwZ-VG-Xxz"/>
+                            <constraint firstItem="w0L-Qe-NXY" firstAttribute="top" secondItem="bpn-H3-uSt" secondAttribute="bottom" constant="24" id="sYd-8e-WG2"/>
+                            <constraint firstItem="bpn-H3-uSt" firstAttribute="top" secondItem="NMd-5w-Z4o" secondAttribute="bottom" constant="16" id="zhe-Af-DfY"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ljc-wW-JAS"/>
                     </view>
@@ -77,11 +116,12 @@
                     </navigationItem>
                     <connections>
                         <outlet property="genarationLabel" destination="861-Ox-s98" id="T0k-1i-KnU"/>
-                        <outlet property="gridView" destination="FyG-2b-iAc" id="bTe-1X-16z"/>
+                        <outlet property="gridView" destination="NMd-5w-Z4o" id="Nl7-Bq-umb"/>
                         <outlet property="preset1Button" destination="JTd-qW-EOW" id="vvh-FV-osZ"/>
                         <outlet property="preset2Button" destination="cWr-Hz-8OY" id="Dny-Gq-MRp"/>
                         <outlet property="preset3Button" destination="SDZ-qU-Rhu" id="07R-tJ-mK7"/>
                         <outlet property="preset4Button" destination="3rs-OV-Z28" id="pRZ-C4-bu2"/>
+                        <outlet property="tabBar" destination="SU4-QW-0di" id="cTT-S7-Uqd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7xC-ih-Qcl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -112,31 +152,42 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="80"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Csm-41-isp">
-                                <rect key="frame" x="14" y="29" width="31" height="22"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="playpause" catalog="system">
-                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
-                                </state>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tJH-kx-e6W">
-                                <rect key="frame" x="368" y="29" width="22" height="22"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="stop" catalog="system">
-                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
-                                </state>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p1b-oQ-45D">
-                                <rect key="frame" x="145" y="25" width="130" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
-                                <state key="normal" title="Advance 1 Step"/>
-                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="sh2-iX-BVU">
+                                <rect key="frame" x="16" y="23" width="382" height="34"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Csm-41-isp">
+                                        <rect key="frame" x="0.0" y="0.0" width="30.5" height="34"/>
+                                        <state key="normal" image="playpause" catalog="system">
+                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="playButton:" destination="UDZ-fc-Gsb" eventType="touchUpInside" id="OZo-di-HlO"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p1b-oQ-45D">
+                                        <rect key="frame" x="130.5" y="0.0" width="130" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                                        <state key="normal" title="Advance 1 Step"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="anh-EM-lpz">
+                                        <rect key="frame" x="360.5" y="0.0" width="21.5" height="34"/>
+                                        <state key="normal" image="stop" catalog="system">
+                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="sh2-iX-BVU" firstAttribute="centerY" secondItem="2sk-7t-FBY" secondAttribute="centerY" id="att-1G-G65"/>
+                            <constraint firstItem="sh2-iX-BVU" firstAttribute="leading" secondItem="2sk-7t-FBY" secondAttribute="leading" constant="16" id="us2-vo-Rdz"/>
+                            <constraint firstAttribute="trailing" secondItem="sh2-iX-BVU" secondAttribute="trailing" constant="16" id="y3A-uy-Weh"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CeN-qC-AMs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="UDZ-fc-Gsb" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1951" y="777"/>
         </scene>

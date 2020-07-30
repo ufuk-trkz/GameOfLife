@@ -13,30 +13,48 @@ class GameViewController: UIViewController {
     
     // MARK: - Outlets
     @IBOutlet weak var genarationLabel: UILabel!
-    @IBOutlet weak var gridView: SKView!
+    @IBOutlet weak var gridView: GridView!
     @IBOutlet weak var preset1Button: UIButton!
     @IBOutlet weak var preset2Button: UIButton!
     @IBOutlet weak var preset3Button: UIButton!
     @IBOutlet weak var preset4Button: UIButton!
     
-    // MARK: - Properties
-    var scene: GameScene!
+    @IBOutlet weak var tabBar: UIView!
     
+    // MARK: - Properties
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        gridView.matrix = gridView.newMatrix()
+        gridView.nextMatrix = gridView.newMatrix()
 
         // Configure the view
         gridView.isMultipleTouchEnabled = false
+        gridView.updateGrid()
+    }
+    @IBAction func play(_ sender: Any) {
+        gridView.configureTimer(label: genarationLabel)
         
-        // Create and configure the scene.
-        scene = GameScene(size: gridView.bounds.size)
-        scene.scaleMode = .aspectFill
-        
-        // Present the scene.
-        gridView.presentScene(scene)
+    }
+    @IBAction func stop(_ sender: Any) {
+        gridView.configureTimer(label: genarationLabel)
+        gridView.resetGrid()
+        genarationLabel.text = "Generation: #"
     }
     
-
+    @IBAction func preset1(_ sender: Any) {
+        gridView.preset1()
+    }
+    @IBAction func preset2(_ sender: Any) {
+        gridView.preset2()
+    }
+    @IBAction func preset3(_ sender: Any) {
+        gridView.preset3()
+    }
+    @IBAction func preset4(_ sender: Any) {
+        gridView.preset4()
+    }
+    
     /*
     // MARK: - Navigation
 
