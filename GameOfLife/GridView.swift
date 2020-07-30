@@ -63,14 +63,14 @@ class GridView: UIView {
         }
     }
     
-    func configureTimer(label: UILabel) {
+    func configureTimer(label: UILabel, speed: Double) {
         if timer.isValid {
             timer.invalidate()
             self.isUserInteractionEnabled = true
         } else {
             self.isUserInteractionEnabled = false
             timer.invalidate()
-            timer = Timer.scheduledTimer(withTimeInterval: TimeInterval(1), repeats: true, block: { (timer) in
+            timer = Timer.scheduledTimer(withTimeInterval: TimeInterval(speed), repeats: true, block: { (timer) in
                 self.computeNext(label: label)
             })
         }
@@ -92,8 +92,6 @@ class GridView: UIView {
     }
     
     func computeNext(label: UILabel){
-        generation += 1
-        label.text = "Generation: \(generation)"
     
         for x in 0...24 {
             for y in 0...24 {
@@ -113,6 +111,8 @@ class GridView: UIView {
             }
         }
         updateGrid()
+        generation += 1
+        label.text = "Generation: \(generation)"
     }
     
     func resetGrid() {
@@ -120,6 +120,7 @@ class GridView: UIView {
         for x in 0...nextMatrix.count-1 {
             for y in 0...nextMatrix.count-1 {
                 nextMatrix[x][y].die()
+                matrix[x][y].die()
             }
         }
     }
@@ -160,13 +161,13 @@ class GridView: UIView {
         let x = col/2
         let y = row/2
         
-        nextMatrix[x][y].comeAlive()
-        nextMatrix[x+2][y].comeAlive()
-        nextMatrix[x-1][y-1].comeAlive()
-        nextMatrix[x+2][y-1].comeAlive()
+        nextMatrix[x-1][y].comeAlive()
+        nextMatrix[x+1][y].comeAlive()
+        nextMatrix[x-2][y-1].comeAlive()
+        nextMatrix[x+1][y-1].comeAlive()
+        nextMatrix[x-1][y-2].comeAlive()
         nextMatrix[x][y-2].comeAlive()
-        nextMatrix[x+1][y-2].comeAlive()
-        nextMatrix[x+1][y+1].comeAlive()
+        nextMatrix[x][y+1].comeAlive()
         
         updateGrid()
     }
@@ -189,7 +190,6 @@ class GridView: UIView {
         for x in nextMatrix {
             for _ in Range(0...24) {
                 x.randomElement()?.comeAlive()
-                
             }
         }
         updateGrid()

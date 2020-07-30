@@ -20,7 +20,35 @@ class GameViewController: UIViewController {
     @IBOutlet weak var preset4Button: UIButton!
     @IBOutlet weak var oneStepButton: UIButton!
     
+    @IBOutlet weak var speedLabel: UILabel!
+    @IBOutlet weak var decSpeedButton: UIButton!
+    @IBOutlet weak var incSpeedButton: UIButton!
+    
+    @IBOutlet weak var randomButton: UIButton!
+    
     // MARK: - Properties
+    var speed: Double = 1
+    var isRunning: Bool = false {
+        didSet {
+            if isRunning {
+                preset1Button.isEnabled = false
+                preset2Button.isEnabled = false
+                preset3Button.isEnabled = false
+                preset4Button.isEnabled = false
+                randomButton.isEnabled = false
+                decSpeedButton.isEnabled = false
+                incSpeedButton.isEnabled = false
+            } else {
+                preset1Button.isEnabled = true
+                preset2Button.isEnabled = true
+                preset3Button.isEnabled = true
+                preset4Button.isEnabled = true
+                randomButton.isEnabled = true
+                decSpeedButton.isEnabled = true
+                incSpeedButton.isEnabled = true
+            }
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,12 +63,16 @@ class GameViewController: UIViewController {
         gridView.computeNext(label: genarationLabel)
     }
     @IBAction func play(_ sender: Any) {
-        gridView.configureTimer(label: genarationLabel)
+        isRunning.toggle()
+        gridView.configureTimer(label: genarationLabel, speed: speed)
     }
     @IBAction func stop(_ sender: Any) {
-        gridView.configureTimer(label: genarationLabel)
+        if isRunning {
+            gridView.configureTimer(label: genarationLabel, speed: speed)
+        }
         gridView.resetGrid()
         genarationLabel.text = "Generation: #"
+        isRunning.toggle()
     }
     
     @IBAction func preset1(_ sender: Any) {
@@ -59,6 +91,19 @@ class GameViewController: UIViewController {
     @IBAction func random(_ sender: Any) {
         gridView.randomSet()
     }
+    
+    @IBAction func increaseSpeed(_ sender: Any) {
+        speed += 0.1
+        speedLabel.text = String(format: "%.1f", speed) + "s"
+    }
+    @IBAction func decreaseSpeed(_ sender: Any) {
+        if speed != 0.1 {
+            speed -= 0.1
+            speedLabel.text = String(format: "%.1f", speed) + "s"
+        }
+    }
+    
+    
     /*
     // MARK: - Navigation
 
